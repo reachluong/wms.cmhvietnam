@@ -111,9 +111,9 @@ class CompanyController extends Controller
             ], 404);
         }
 
-        $validated = $request->validated([
-            'company_code' => 'required|string|unique:companies,company_code,' .$id,
-            'name' => 'required|string|max:255',
+        $validated = $request->validate([
+            'company_code' => 'sometimes|string|unique:companies,company_code,' .$id,
+            'name' => 'sometimes|string|max:255',
             'phone' => 'nullable|string',
             'address' => 'nullable|string',
             'manager_name' => 'nullable|string',
